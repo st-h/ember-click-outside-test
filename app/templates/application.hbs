@@ -1,19 +1,19 @@
 <main>
   <section>
-    <button type="button" {{on 'click' (fn (mut this._showComponent))}}>open component</button>
-
+    <button type="button" {{on 'click' (fn this.toggleComponent)}}>open component</button>
+    <div>_showComponent: {{this._showComponent}}</div>
     {{#if this._showComponent}}
       <ClickOutside @onClickOutside={{fn (mut this._showComponent) false}}>
         click below to hide
       </ClickOutside>
     {{/if}}
   </section>
-
   <section>
-    <button type="button" {{on 'click' (fn (mut this._showModifier))}}>open modifier</button>
+    <button type="button" {{on 'click' (fn this.toggleModifier)}}>open modifier</button>
 
+    <div>_showModifier: {{this._showModifier}}</div>
     {{#if this._showModifier}}
-      <div {{on-click-outside (fn (mut this._showModifier) false)}}>
+      <div {{on-click-outside (fn (mut this._showModifier) false) capture=true}}>
         click below to hide
       </div>
     {{/if}}
